@@ -1,7 +1,5 @@
 from rest_framework import viewsets, generics
 from rest_framework.permissions import IsAuthenticated
-from django.shortcuts import get_object_or_404
-from django.db.models import Q
 
 from .models import TaskModel
 from .serializers import TaskSerializer
