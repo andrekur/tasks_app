@@ -15,6 +15,8 @@ class UserCreateSerializer(serializers.ModelSerializer):
 
     def validate_username(self, value):
         if UserModel.objects.filter(username=value).exists():
-            return serializers.ValidationError(detail='username must be unique')
+            return serializers.ValidationError(
+                detail='username must be unique'
+            )
 
         return value

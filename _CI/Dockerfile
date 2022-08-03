@@ -2,11 +2,10 @@ FROM python:3.9.6
 
 RUN pip install --upgrade pip
 
-COPY . /app
+COPY . .
 
-COPY _CI/entrypoint.sh /app
+COPY _CI/entrypoint.sh .
 
-WORKDIR /app
 
 RUN chmod +x entrypoint.sh
 

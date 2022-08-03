@@ -14,10 +14,9 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
 
-from rest_framework.permissions import IsAuthenticated
-from django.urls import path, include, re_path
+from rest_framework.permissions import AllowAny
+from django.urls import path, include
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 
@@ -26,19 +25,20 @@ schema_view = get_schema_view(
       title="API",
       default_version='v1',
       description="Tasks App",
-      # terms_of_service="https://www.google.com/policies/terms/",
-      # contact=openapi.Contact(email="contact@snippets.local"),
-      # license=openapi.License(name="BSD License"),
    ),
    public=True,
-   permission_classes=(IsAuthenticated,),
+   permission_classes=(AllowAny,),
 )
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include('tasks_app.urls')),
-    path('api/', include('user_app.urls')),
+    path('api/tasks/', include('tasks_app.urls')),
+    path('api/users/', include('user_app.urls')),
     path('api/token/', include('jwt_app.urls')),
-    path('api/swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
+    path(
+        'api/swagger/',
+        schema_view.with_ui('swagger', cache_timeout=0),
+        name='schema-swagger-ui'
+    ),
 ]

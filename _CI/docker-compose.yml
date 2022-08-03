@@ -10,7 +10,7 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     environment:
-      - POSTGRES_DB=${DB_NAME_DB}
+      - POSTGRES_DB=${DB_NAME}
       - POSTGRES_USER=${DB_USER}
       - POSTGRES_PASSWORD=${DB_PASSWORD}
   nginx:
@@ -22,6 +22,7 @@ services:
       - ./nginx/:/etc/nginx/templates/
     environment:
       - SERVER_PORT=${API_SERVER_PORT}
+      - NGINX_PORT=${NGINX_PORT_OUT}
     depends_on:
       - web
   web:

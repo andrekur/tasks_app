@@ -10,5 +10,9 @@ router.register('my_tasks', MyTaskViewSet, basename='tasks')
 
 urlpatterns = [
     path('v1/', include(router.urls)),
-    path('v1/performers_tasks/', UserPerformersTaskViewList.as_view(), name='user_performers_tasks')
+    path(
+        'v1/performers_tasks/',
+        UserPerformersTaskViewList.as_view(),
+        name='user_performers_tasks'
+    )
 ]

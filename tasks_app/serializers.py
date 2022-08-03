@@ -20,4 +20,3 @@ class TaskSerializer(serializers.ModelSerializer):
         fields = '__all__'
         model = TaskModel
         read_only_fields = ('owner', 'create_date')
-
